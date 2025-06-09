@@ -66,15 +66,27 @@
   <h2>System Architecture</h2>
   <img src="pictures/systemarch.PNG" alt="System Architecture diagram">
 
-  <p>The hardware components used</p>
+  <p>The hardware components used:</p>
   <ul>
-    <li><b>SimpleLink CC3200 LaunchPad (CC3200-LaunchXL): </b> A Texas Instruments microcontroller was used in this lab, including features like CPU, memory, and built-in peripherals. GPIO pins controlled devices like LEDs and switches, while the UART peripheral enabled communication between two devices.</li>
-    <li><b>Adafruit OLED Breakout Board:</b> 1.5” color OLED that displays high-contrast 16-bit color. The visible portion of the OLED measures 1.5" diagonal and contains 128x128 RGB pixels, each one made of red, green and blue OLEDs. Each pixel can be set with 16-bits of resolution for a large range of colors. Compatible with 4-wire write only SPI protocol. </li>
-    <li><b>AT&T S10-S3 Remote: </b>Universal remote control for a specific TV. </li>
-    <li><b>Vishay TSOP31336 IR Receiver Module: </b>This 3-pin module receives incoming IR signals from AT&T S10-S3 Remote on the OUT pin. </li>
+    <li><strong>SimpleLink CC3200 LaunchPad (CC3200-LaunchXL): </strong> A Texas Instruments microcontroller was used in this lab, including features like CPU, memory, and built-in peripherals. GPIO pins controlled devices like LEDs and switches, while the UART peripheral enabled communication between two devices.</li>
+    <li><strong>Adafruit OLED Breakout Board:</strong> 1.5” color OLED that displays high-contrast 16-bit color. The visible portion of the OLED measures 1.5" diagonal and contains 128x128 RGB pixels, each one made of red, green and blue OLEDs. Each pixel can be set with 16-bits of resolution for a large range of colors. Compatible with 4-wire write only SPI protocol. </li>
+    <li><strong>AT&T S10-S3 Remote: </strong>Universal remote control for a specific TV. </li>
+    <li><strong>Vishay TSOP31336 IR Receiver Module: </strong>This 3-pin module receives incoming IR signals from AT&T S10-S3 Remote on the OUT pin. </li>
   </ul>
 
-  <p>A description of each state in the Virtual Pet State Machine Diagram is provided below:</p>
+
+  <p>Utilized Software:</p>
+  <ul>
+    <li><strong>Code Composer Studio (CSS) IDE:</strong> Used for editing, debugging, simulating, and compiling C/C++ code.</li>
+    <li><strong>Saleae Logic 2 Software:</strong> Advanced logic analysis and debugging of captured waveforms.</li>
+    <li><strong>TI Sysconfig Tool:</strong> Configuration tool for pin multiplexing, memory setup, peripheral/driver settings, software stack configuration, and more.</li>
+    <li><strong>Amazon Web Services (AWS):</strong> Cloud computing platform and APIs. We specifically used the AWS IoT Device Shadow model to sync state between the device and AWS services.</li>
+  </ul>
+
+  <h2>State Diagram</h2>
+  <img src="pictures/statediagram.PNG" alt="Screenshot of state diagram">
+
+  <p>A description of each state in the state machine is provided below:</p>
     <ol>
     <li>
         <strong>Onboard State:</strong>  
@@ -109,8 +121,7 @@
     </li>
     </ol>
 
-  <h2>State Diagram</h2>
-  <img src="pictures/statediagram.PNG" alt="Screenshot of state diagram">
+  
 
   <div class="video-container">
     <iframe
@@ -120,9 +131,10 @@
     </iframe>
   </div>
 
+  <h2>View the full source on GitHub: </h2>
 
   <p class="repo-link">
-    🔗 View the full source on GitHub:  
+    🔗: 
     <a href="https://github.com/lmvchau/eec172-lab5" target="_blank">
       github.com/lmvchau/eec172-lab5
     </a>
