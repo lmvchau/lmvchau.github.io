@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EEC172 Mini Site</title>
+  <style>
+    body { 
+      font-family: sans-serif; 
+      text-align: center; 
+      padding: 2rem; 
+    }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect */
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+    a.home-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      text-decoration: none;
+      color: #0366d6;
+    }
+  </style>
+</head>
+<body>
+  <h1>EEC172 Spring 2025 Final Project</h1>
+
+  <p>
+    In this project I built a simple embedded-system demo using the CC3200 LaunchPad.  
+    The demo reads sensor data, displays it on an OLED, and publishes updates to AWS IoT.  
+    Below is a quick video (shot on my phone) showing it in action:
+  </p>
+
+  <div class="video-container">
+    <iframe
+      src="https://www.youtube.com/embed/ghXtFAFQLFI"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <p>
+    In this project I built a simple embedded-system demo using the CC3200 LaunchPad.  
+    The demo reads sensor data, displays it on an OLED, and publishes updates to AWS IoT.  
+    Below is a quick video (shot on my phone) showing it in action:
+  </p>
+
+  <p class="repo-link">
+    🔗 View the full source on GitHub:  
+    <a href="https://github.com/lmvchau/eec172-lab5" target="_blank">
+      github.com/<your-username>/<your-repo-name>
+    </a>
+  </p>
+
+  <a href="/"
+     class="home-link">
+    ← Back to home
+  </a>
+</body>
+</html>
