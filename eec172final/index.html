@@ -29,6 +29,22 @@
       text-decoration: none;
       color: #0366d6;
     }
+        /* Center only your headings: */
+        h1, h2 {
+      text-align: center;
+    }
+
+    /* Left-align paragraphs and lists, and constrain their width: */
+    p, ul, ol {
+      text-align: left;
+      max-width: 800px;       /* optional: keep lines from getting too long */
+      margin: 0 auto 1.5rem;  /* auto left/right center the block, but text inside is left-aligned */
+    }
+
+    /* Add a little indent to the bullets/numbers: */
+    ul, ol {
+      padding-left: 1.5rem;
+    }
   </style>
 </head>
 <body>
@@ -104,11 +120,6 @@
     </iframe>
   </div>
 
-  <p>
-    In this project I built a simple embedded-system demo using the CC3200 LaunchPad.  
-    The demo reads sensor data, displays it on an OLED, and publishes updates to AWS IoT.  
-    Below is a quick video (shot on my phone) showing it in action:
-  </p>
 
   <p class="repo-link">
     🔗 View the full source on GitHub:  
