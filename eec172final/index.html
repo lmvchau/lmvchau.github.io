@@ -32,13 +32,69 @@
   </style>
 </head>
 <body>
-  <h1>EEC172 Spring 2025 Final Project</h1>
+  <h1>EEC172 Spring 2025 Final Project -- Virtual Pet</h1>
+
+  <h2>Luuanne Chau and Kavya Khare</h2>
 
   <p>
-    In this project I built a simple embedded-system demo using the CC3200 LaunchPad.  
-    The demo reads sensor data, displays it on an OLED, and publishes updates to AWS IoT.  
-    Below is a quick video (shot on my phone) showing it in action:
+    Our virtual pets allows the user to enjoy the companionship of a pet without the high-responsibility commitments
+    of a traditional pet. Unlike traditional tamagotchi pets, our pet allows the user to interact by shaking, 
+    and sends real-time notifications to the user’s phone if the pet is hungry, lonely, or sleepy. 
   </p>
+
+  <p>
+    This project employs a TI CC3200 LaunchPad microcontroller as its core component. This will drive a 128x128 <strong>SPI</strong> RGB OLED to visually display the pet, its stats, and current state. The user input is captured via two sensors. The TI CC3200 has an onboard <strong>I2C</strong> accelerometer that will be used for motion cues. By using the IR transmitting TV remote and <strong>IR receiver</strong>, the player can customize and take care of their pet through basic actions such as feeding, playing, and putting it to sleep.
+    The <strong>AWS IoT Core</strong> is utilized to store the virtual pet’s state and automatically sends email notifications to the user’s phone for urgent cases of hunger, sadness, and sickness.
+  </p>
+
+  <h2>System Architecture</h2>
+  <img src="pictures/systemarch.PNG" alt="System Architecture diagram">
+
+  <p>The hardware components used</p>
+  <ul>
+    <li><b>SimpleLink CC3200 LaunchPad (CC3200-LaunchXL): </b> A Texas Instruments microcontroller was used in this lab, including features like CPU, memory, and built-in peripherals. GPIO pins controlled devices like LEDs and switches, while the UART peripheral enabled communication between two devices.</li>
+    <li><b>Adafruit OLED Breakout Board:</b> 1.5” color OLED that displays high-contrast 16-bit color. The visible portion of the OLED measures 1.5" diagonal and contains 128x128 RGB pixels, each one made of red, green and blue OLEDs. Each pixel can be set with 16-bits of resolution for a large range of colors. Compatible with 4-wire write only SPI protocol. </li>
+    <li><b>AT&T S10-S3 Remote: </b>Universal remote control for a specific TV. </li>
+    <li><b>Vishay TSOP31336 IR Receiver Module: </b>This 3-pin module receives incoming IR signals from AT&T S10-S3 Remote on the OUT pin. </li>
+  </ul>
+
+  <p>A description of each state in the Virtual Pet State Machine Diagram is provided below:</p>
+    <ol>
+    <li>
+        <strong>Onboard State:</strong>  
+        The system begins by displaying an egg and prompting the user to “shake to hatch.” The onboard I2C accelerometer continuously samples motion, and when a vigorous shake gesture is detected, the pet hatches and the user enters the <em>Pet Option 1</em> state.
+    </li>
+    <li>
+        <strong>Pet Option 1 State:</strong>  
+        Using the channel plus and minus buttons on the IR remote, the user navigates between three ASCII‐style pet faces on the OLED. Pressing MUTE confirms their choice and moves them into the <em>Enter/Set Name via Multi-Tap</em> state.
+    </li>
+    <li>
+        <strong>Enter/Set Name via Multi-Tap State:</strong>  
+        The user enters a custom pet name using multi-tap text entry, which is shown on the OLED. Pressing MUTE finalizes the name and transitions to the <em>Pet Existence</em> state.
+    </li>
+    <li>
+        <strong>Pet Existence State:</strong>  
+        The OLED displays the selected ASCII pet, its custom name, and three status bars—H (hunger), L (loneliness), and S (sleepiness). A periodic timer steadily decreases each stat and updates the bars accordingly.
+    </li>
+    <li>
+        <strong>Care States:</strong>  
+        In the Existence state, the user can press:
+        <ul>
+        <li>Button 1 to feed (increases H)</li>
+        <li>Button 2 to play (increases L)</li>
+        <li>Button 3 to sleep (increases S)</li>
+        </ul>
+        After each action the corresponding stat is raised, the bars are redrawn, and the system returns to the Pet Existence state.
+    </li>
+    <li>
+        <strong>Sick State:</strong>  
+        If any health statistic reaches 0, the pet becomes sick: a <code>sick_count</code> begins to decrease and a red exclamation mark is displayed on the OLED.  
+        <!-- If there's additional behavior when the user acts while sick, you can add another nested list here -->
+    </li>
+    </ol>
+
+  <h2>State Diagram</h2>
+  <img src="pictures/statediagram.PNG" alt="Screenshot of state diagram">
 
   <div class="video-container">
     <iframe
@@ -57,7 +113,7 @@
   <p class="repo-link">
     🔗 View the full source on GitHub:  
     <a href="https://github.com/lmvchau/eec172-lab5" target="_blank">
-      github.com/<your-username>/<your-repo-name>
+      github.com/lmvchau/eec172-lab5
     </a>
   </p>
 
